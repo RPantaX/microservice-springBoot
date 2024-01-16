@@ -1,0 +1,22 @@
+#sintaxix jerarquica, se dejan 2 espacios. puerto 8761 es el puerto por defecto de eureka
+#el name es un acronimo, podemos ponerle cualquiera
+#eureka para que nuestros miscroservicios se puedan conectar a �l
+#En localhost tendremos el servidor de eureka
+#client: regis-whit-eur:por defecto eureka se registra a si mismo en el servidor, con false le decimos que no se suscriba as�mismo.
+#defaultZone: le indicamos el path en donde funcionar� eureka
+#${server.port}: le podrimos poner el numero, pero es m�s f�cil referenciar la propiedad para que cuanddo lo cambiemos solamente cambiemos en el port
+server:
+  port: 8761
+
+spring:
+  application:
+    name: msvc-eureka
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    server-url:
+      defaultZone: http://localhost:${server.port}/eureka/
